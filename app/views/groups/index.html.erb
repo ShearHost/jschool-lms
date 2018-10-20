@@ -24,6 +24,10 @@
 
 <% css_bundle :course_list %>
 
+  <button type="button" id="start_new_course" class="Button element_toggler" aria-controls="new_group_form" aria-label="Add a Group">
+  <i class="icon-plus"></i> Group</button>
+  <%= render :partial => 'shared/new_group_form' %>
+
   <h2><%= t :heading_current_groups, 'Current Groups' %></h2>
   <% if @current_groups.empty? %>
     <%= t(:no_groups, "No Groups") %>

@@ -1,0 +1,65 @@
+<%
+  # Copyright (C) 2012 - present Instructure, Inc.
+  #
+  # This file is part of Canvas.
+  #
+  # Canvas is free software: you can redistribute it and/or modify it under
+  # the terms of the GNU Affero General Public License as published by the Free
+  # Software Foundation, version 3 of the License.
+  #
+  # Canvas is distributed in the hope that it will be useful, but WITHOUT ANY
+  # WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+  # A PARTICULAR PURPOSE. See the GNU Affero General Public License for more
+  # details.
+  #
+  # You should have received a copy of the GNU Affero General Public License along
+  # with this program. If not, see <http://www.gnu.org/licenses/>.
+%>
+
+<%= form_for Group.new, :html => { :id => 'new_group_form',
+                                   :class => 'bootstrap-form form-horizontal',
+                                   'data-turn-into-dialog' => '{"width":500,"resizable":false}',
+                                   :title => t('start_a_new_group', 'Start a New Group'),
+                                   :style => 'display:none;' } do |f| %>
+
+  <div class="control-group">
+    <%= f.label :name, :en => "Group Name", :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :name,
+                       :placeholder => t('new_course_name_placeholder', 'Group Name'),
+                       :class => 'input-xlarge',
+                       :maxlength => '255' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :name, :en => "Course", :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :name,
+                       :placeholder => t('new_course_name_placeholder', 'Course'),
+                       :class => 'input-xlarge',
+                       :maxlength => '255' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :name, :en => "Term", :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :name,
+                       :placeholder => t('new_course_name_placeholder', 'Term'),
+                       :class => 'input-xlarge',
+                       :maxlength => '255' %>
+    </div>
+  </div>
+
+
+  <div class="button-container">
+    <button type="button"
+            data-text-while-loading="<%= t 'cancel', "Cancel" %>"
+            class="btn dialog_closer"><%= t 'cancel', "Cancel" %></button>
+    <button class="btn btn-primary"
+            data-text-while-loading="<%= t 'creating_course', 'Creating group...' %>"
+            type="submit"><%= t 'create_course', 'Create group' %><h/button>
+  </div>
+<% end %>
+

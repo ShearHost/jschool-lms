@@ -83,7 +83,7 @@
               </div>
             </a>
           </li>
-          <% if @current_user && @current_user.current_active_groups? %>
+          <%# if @current_user && @current_user.current_active_groups? %>
             <li class="menu-item ic-app-header__menu-list-item <%= ' ic-app-header__menu-list-item--active' if active_path?('/groups') %>">
               <a id="global_nav_groups_link" href="/groups" class="ic-app-header__menu-list-link">
                 <div class="menu-item-icon-container" aria-hidden="true">
@@ -94,7 +94,7 @@
                 </div>
               </a>
             </li>
-          <% end %>
+          <%# end %>
           <li class="menu-item ic-app-header__menu-list-item <%= ' ic-app-header__menu-list-item--active' if active_path?('/calendar') %>">
             <a id="global_nav_calendar_link" href="/calendar" class="ic-app-header__menu-list-link">
               <div class="menu-item-icon-container" aria-hidden="true">
