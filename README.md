@@ -204,6 +204,10 @@ Once your database is configured, we need to actually fill the database with tab
 ~/canvas$ bundle exec rails db:initial_setup
 ```
 
+Additionally consider setting up a shared database for all developers. For more information on how 
+to manage any canvas_development database configuration and sharing a signle database checkout
+the [Database Management Section] (docs/database_management.md) section
+
 ### File Generation
 
 Canvas needs to build a number of assets before it will work correctly. You will need to rerun:

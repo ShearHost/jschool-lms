@@ -1,0 +1,90 @@
+#Database Managerment
+
+##Configuring Server Database Access
+Canvas utlizes a PostgreSQL database which is by default only accessible locally, to
+enable remote access to the canvas_development database follow the following instructions. 
+These instructions assume you have set up the canvas environment on an Ubuntu 16.04.5 server.
+
+By default the port the postgres database server is available on is localhost:5432 to make it 
+available on 0.0.0.0:5432 you will need to edit two files: pg_hba.conf and postgresql.conf. 
+
+These files should be located at /etc/postgresql/9.5/main/ but could be located elsewhere,
+to find them run the following commands:
+```
+$ psql canvas_development $USER
+```
+
+```
+=# show config_file;
+=# show hba_file;
+=# \q
+```
+
+these will be the locations of these files, at the very least they should be located in the
+same directory. Change into that directory:
+
+```
+$ cd /etc/postgresql/9.5/main
+$ sudo su
+```
+
+Then in the postgresql.conf find the line:
+
+```
+listen_addresses = 'localhost'
+```
+
+replace 'localhost' with a '*'
+
+Next, in pg_hba.conf add the following line:
+```
+host all all 0.0.0.0/0 md5
+```
+
+after this you will need to restart postgres to see the changes have an effect, to restart
+postgres run:
+
+```
+$ /etc/init.d/postgresql restart
+```
+
+Now after all of this is finished, to access your postgres databases remotely you will now
+require a password.
+```
+$ sudo -u postgres psql -c "alter user $USER with password 'postgres'" postgres
+```
+The password to your postgres access is now: postgres
+
+##Managing Your Database with pgAdmin
+
+While it is perfectly feasible to manage your database with the psql cli, it is much
+easier to control database queries and information with the GUI tool pgAdmin. Below
+are a set of instructions to connect to a postgres instance local and remote.
+
+###Getting pgAdmin Setup
+
+TODO
+
+###Connecting
+
+Connecting to a postgres server is relatively straight forward, but if you have trouble
+follow these steps:
+
+1. After opening pgAdmin, right click *Servers* and *Create -> Server...* 
+2. In *General* enter the name you would like to see when referencing this server connection
+i.e. "Amazon-AWS"
+3. Click the *Connection* tab
+4. In the *Connection* tab enter the hostname of the postgres server
+if it is locally hosted enter localhost if it is not enter the ip address
+of its server.
+5. Leave port as 5432 (unless it is different but this is default)
+6. In *Maintenance database* enter the name of the database you will be managing
+7. In *Username* enter the username of the superuser of the database
+8. Enter the password of the database (if there is one), and *Save password?*
+
+If you are connecting over a non-ssh connection, you are done with the pgAdmin 
+configuration process for your database, however if not continue below.  
+
+###Connecting via SSH to AWS Postgres
+
+TODO
