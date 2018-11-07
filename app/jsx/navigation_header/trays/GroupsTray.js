@@ -26,6 +26,8 @@ import Link from '@instructure/ui-elements/lib/components/Link'
 import List, {ListItem} from '@instructure/ui-elements/lib/components/List'
 import Spinner from '@instructure/ui-elements/lib/components/Spinner'
 
+// I18n.t('All Groups')
+
 export default function GroupsTray({groups, hasLoaded}) {
   return (
     <View as="div" padding="medium">
@@ -40,7 +42,10 @@ export default function GroupsTray({groups, hasLoaded}) {
           ).concat([
             <ListItem key="hr"><hr role="presentation"/></ListItem>,
             <ListItem key="all">
-              <Link href="/groups">{I18n.t('All Groups')}</Link>
+              <Link href="/groups">{I18n.t('Groups Dashboard')}</Link>
+            </ListItem>,
+            <ListItem key="profile">
+                <Link href="/groups">{I18n.t('Group Profile')}</Link>
             </ListItem>
           ])
         ) : (

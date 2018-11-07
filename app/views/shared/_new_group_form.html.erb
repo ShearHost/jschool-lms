@@ -16,6 +16,7 @@
   # with this program. If not, see <http://www.gnu.org/licenses/>.
 %>
 
+
 <%= form_for Group.new, :html => { :id => 'new_group_form',
                                    :class => 'bootstrap-form form-horizontal',
                                    'data-turn-into-dialog' => '{"width":500,"resizable":false}',
@@ -25,7 +26,8 @@
   <div class="control-group">
     <%= f.label :name, :en => "Group Name", :class => "control-label" %>
     <div class="controls">
-      <%= f.text_field :name,
+      <%= f.text_field :group,
+                        :value => params[:group],
                        :placeholder => t('new_course_name_placeholder', 'Group Name'),
                        :class => 'input-xlarge',
                        :maxlength => '255' %>
@@ -35,7 +37,8 @@
   <div class="control-group">
     <%= f.label :name, :en => "Course", :class => "control-label" %>
     <div class="controls">
-      <%= f.text_field :name,
+      <%= f.text_field :course,
+                        :value => params[:course],
                        :placeholder => t('new_course_name_placeholder', 'Course'),
                        :class => 'input-xlarge',
                        :maxlength => '255' %>
@@ -45,7 +48,8 @@
   <div class="control-group">
     <%= f.label :name, :en => "Term", :class => "control-label" %>
     <div class="controls">
-      <%= f.text_field :name,
+      <%= f.text_field :term,
+                        :value => params[:term],
                        :placeholder => t('new_course_name_placeholder', 'Term'),
                        :class => 'input-xlarge',
                        :maxlength => '255' %>
@@ -58,8 +62,20 @@
             data-text-while-loading="<%= t 'cancel', "Cancel" %>"
             class="btn dialog_closer"><%= t 'cancel', "Cancel" %></button>
     <button class="btn btn-primary"
-            data-text-while-loading="<%= t 'creating_course', 'Creating group...' %>"
-            type="submit"><%= t 'create_course', 'Create group' %><h/button>
+            data-text-while-loading="<%= t 'creating_group', 'Creating group...' %>"
+            type="submit"><%= t 'create_groups', 'Create NEW' %></button>
   </div>
 <% end %>
+
+<#%
+    # <#%= f.button :submit , name: "create_groups", value %>
+    # @new_group = Group.create(:name => params[:group],
+    #                           :context.name => params[:course], 
+    #                           :context.enrollment_term => params[:name])
+    # @current_groups.push(@new_group)
+
+   # @course1 = Course.create(:name => 'English 101', :course_code => 'ENG101',
+    #                         :start_at => start_at, :conclude_at => end_at,
+    #                         :account => @sub_account, :enrollment_term => @term1)
+%>
 
