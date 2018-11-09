@@ -139,6 +139,32 @@
       <span class="edit_data"><%= f.time_zone_select :time_zone, I18nTimeZone.us_zones, :model => I18nTimeZone, :default => (@domain_root_account.try(:default_time_zone) || "Mountain Time (US & Canada)") %></span>
     </td>
   </tr>
+  
+  <tr>
+    <th scope="row"><%= f.blabel :bio, :en => "Biography" %></th>
+    <td><span <% unless editable_name %>id="short_name"<% end %>
+              class="short_name <%= editable_name ? 'display_data' : 'edit_or_show_data' %>"><%=h "" %></span>
+      <%= f.text_field :short_name, :class => "edit_data", :maxlength => 255, value:"", :size => 30, "aria-describedby" => "hints_short_name" if editable_name %>
+      <span id="hints_short_name" class="edit_or_show_data data_description"><br/><%= t('hints.short_name', "A short description about yourself and your interests.") %></span>
+    </td>
+  </tr>
+  <tr>
+    <th scope="row"><%= f.blabel :bio, :en => "Skills" %></th>
+    <td><span <% unless editable_name %>id="short_name"<% end %>
+              class="short_name <%= editable_name ? 'display_data' : 'edit_or_show_data' %>"><%=h ""%></span>
+      <%= f.text_field :short_name, :class => "edit_data", :maxlength => 255, value:"", :size => 30, "aria-describedby" => "hints_short_name" if editable_name %>
+      <span id="hints_short_name" class="edit_or_show_data data_description"><br/><%= t('hints.short_name', "A list of languages, programs, and tools you are experienced/familiar with.") %></span>
+    </td>
+  </tr>
+  <tr>
+    <th scope="row"><%= f.blabel :bio, :en => "Notable Courses" %></th>
+    <td><span <% unless editable_name %>id="short_name"<% end %>
+              class="short_name <%= editable_name ? 'display_data' : 'edit_or_show_data' %>"><%=h "" %></span>
+      <%= f.text_field :short_name, :class => "edit_data", :maxlength => 255, value:"", :size => 30, "aria-describedby" => "hints_short_name" if editable_name %>
+      <span id="hints_short_name" class="edit_or_show_data data_description"><br/><%= t('hints.short_name', "A list of taken courses that are relevant.") %></span>
+    </td>
+  </tr>
+
   <% if @domain_root_account == Account.default %>
     <tr>
       <td colspan="2">
@@ -622,3 +648,5 @@ TEXT
     %>
   </p>
 <% end %>
+
+

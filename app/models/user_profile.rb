@@ -30,6 +30,13 @@ class UserProfile < ActiveRecord::Base
 
   BASE_TABS = [
     {
+        id: TAB_PROFILE,
+        label: -> { I18n.t('#user_profile.tabs.profile_page', "Profile") },
+        css_class: 'profile_page',
+        href: :profile_path,
+        no_args: true
+    }.freeze,
+    {
       id: TAB_COMMUNICATION_PREFERENCES,
       label: -> { I18n.t('#user_profile.tabs.notifications', "Notifications") },
       css_class: 'notifications',

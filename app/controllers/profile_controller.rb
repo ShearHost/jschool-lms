@@ -177,6 +177,33 @@ class ProfileController < ApplicationController
     end
   end
 
+  def profile_page
+    if api_request?
+        @user = api_find(User, params[:user_id])
+        return unless authorized_action(@user, @current_user, :read_profile)
+    else
+        return unless require_password_session
+        @user = @current_user
+        @user.dismiss_bouncing_channel_message!
+    end
+    @user_data = profile_data(@user.profile, @current_user, session, [])
+    @context = @user.profile
+    @active_tab = "profile_page"
+    js_env :enable_gravatar => @domain_root_account&.enable_gravatar?
+    respond_to do |format|
+        format.html do
+            show_tutorial_ff_to_user = @domain_root_account&.feature_enabled?(:new_user_tutorial) &&
+                                        @user.participating_instructor_course_ids.any?
+            add_crumb(t(:crumb, "%{user}'s settings", :user => @user.short_name), profile_path )
+            js_env(:NEW_USER_TUTORIALS_ENABLED_AT_ACCOUNT => show_tutorial_ff_to_user)
+            render :profile
+        end
+        format.json do
+            render :json => user_profile_json(@user.profile, @current_user, session, params[:include])
+        end
+    end
+  end
+
   # @API Get user profile
   # Returns user profile data, including user id, name, and profile pic.
   #

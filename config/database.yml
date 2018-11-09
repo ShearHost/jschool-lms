@@ -9,14 +9,9 @@ test:
 
 development:
   adapter: postgresql
-  pool: 5
   encoding: utf8
-  host: 54.237.246.35
-  username: ubuntu
-  password: postgres
-  port: 5432
-  timeout: 5000
   database: canvas_development
+  timeout: 5000
 
 production:
   adapter: postgresql

@@ -45,8 +45,11 @@ export default function GroupsTray({groups, hasLoaded}) {
               <Link href="/groups">{I18n.t('Groups Dashboard')}</Link>
             </ListItem>,
             <ListItem key="profile">
-                <Link href="/groups">{I18n.t('Group Profile')}</Link>
-            </ListItem>
+                <Link href="/profile">{I18n.t('Group-Based Profile')}</Link>
+            </ListItem>,
+            <ListItem key="review">
+            <Link href="/profile">{I18n.t('Reviews')}</Link>
+        </ListItem>
           ])
         ) : (
           <ListItem>
