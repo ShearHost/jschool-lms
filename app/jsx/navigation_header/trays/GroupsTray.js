@@ -48,7 +48,7 @@ export default function GroupsTray({groups, hasLoaded}) {
                 <Link href="/profile">{I18n.t('Group-Based Profile')}</Link>
             </ListItem>,
             <ListItem key="review">
-            <Link href="/profile">{I18n.t('Reviews')}</Link>
+            <Link href="/reviews">{I18n.t('Reviews')}</Link>
         </ListItem>
           ])
         ) : (

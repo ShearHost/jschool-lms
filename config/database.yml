@@ -10,6 +10,10 @@ test:
 development:
   adapter: postgresql
   encoding: utf8
+  host: 54.221.24.0
+  username: ubuntu
+  password: postgres
+  port: 5432
   database: canvas_development
   timeout: 5000
 

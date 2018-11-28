@@ -893,6 +893,8 @@ CanvasRails::Application.routes.draw do
 
   get 'equation_images/:id' => 'equation_images#show', as: :equation_images, id: /.+/
 
+  resources :reviews, only: [:index]
+  
   # assignments at the top level (without a context) -- we have some specs that
   # assert these routes exist, but just 404 unless it is a download from local
   # storage. I'm not sure we ever actually want top-level assignments available,
