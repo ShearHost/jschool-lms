@@ -8,8 +8,9 @@
 <p>Technical Knowledge - 3.0 Stars</p>
 <br/>
 <h3>Review Feed</h3>
+<!--This is soley for mockup purposes only, this shall be dynamic in react moving forward -->
 <div id="feed">
-    <div class="review">
+    <div class="review" style="border: grey solid 1px; border-radius: 5px;">
         <div class="reviewer">
             <p>John Smith</p>
         </div>
@@ -18,7 +19,55 @@
                 <p>Overall: 4.5</p>
             </div>
             <button type="button" class="Button element_toggler" aria-controls="new_group_form" aria-label="Add a Group">
-            <i class="icon-folder"></i>Details</button>
+            <i class="icon-folder"></i> Details</button>
+        </div>
+    </div>
+
+    <div class="review" style="border: grey solid 1px; border-radius: 5px;">
+        <div class="reviewer">
+            <p>Bill Hill</p>
+        </div>
+        <div class="view review">
+            <div class="score">
+                <p>Overall: 2.5</p>
+            </div>
+            <button type="button" class="Button element_toggler" aria-controls="new_group_form" aria-label="Add a Group">
+            <i class="icon-folder"></i> Details</button>
         </div>
     </div>
 </div>
+
+<style>
+    #feed{
+        /*display: flex;*/
+    }
+
+    .review{
+        display: flex;
+        width: 95%;
+        padding: 5px 10px;
+        align-items:center;
+        margin-bottom: 10px;
+
+    }
+
+    .review:hover{
+        background-color: lightgray;
+        cursor: pointer;
+    }
+
+    .reviewer{
+        width: 75%;
+        
+    }
+
+    .view.review{
+        width: 25%;
+        dispaly: flex;
+    }
+
+    .view.review div, view.reivew button{
+        padding: 0 5px;
+    }
+
+</style>

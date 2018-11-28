@@ -10,7 +10,7 @@ test:
 development:
   adapter: postgresql
   encoding: utf8
-  host: 54.221.24.0
+  host: 35.172.139.150
   username: ubuntu
   password: postgres
   port: 5432
